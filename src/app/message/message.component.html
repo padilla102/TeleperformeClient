@@ -1,0 +1,3 @@
+<ngb-alert *ngIf="messageService.mensajeSuccess" type="success" (close)="close(messageService.mensajeSuccess)">{{ messageService.mensajeSuccess }}</ngb-alert>
+<ngb-alert *ngIf="messageService.mensajeWarning" type="warning" (close)="close(messageService.mensajeWarning)">{{ messageService.mensajeWarning }}</ngb-alert>
+<ngb-alert *ngIf="messageService.mensajeDanger" type="danger" (close)="close(messageService.mensajeDanger)">{{ messageService.mensajeDanger }}</ngb-alert>

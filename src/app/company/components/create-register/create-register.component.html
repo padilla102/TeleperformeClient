@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4>Datos de la persona natural o jurídica que solicita el servicio de trámites virtuales</h4>
+        </div>
+    </div>
+    <div class="row" *ngIf="companyForm.controls['id'].value !== ''">
+
+        <div class="col-md-12 border border-success rounded text-success bg-success p-2 text-dark bg-opacity-10">
+            <p>La empresa se encuentra Registrada</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form [formGroup]="companyForm">
+                <div class="form-group">
+                    <label for="identificationType">Tipo Identificador</label>
+                    <select [(ngModel)]="idIdentificationType" class="form-control" id="identificationType" #Selected
+                        (change)="changeTypeIdentification(Selected.value)"
+                        formControlName="identificationType">
+                        <option [value]="t.value"  *ngFor="let t of typeIdentificationList">{{t.text}}</option>
+                    </select>
+                    <div *ngIf="companyForm.controls['identificationType'].invalid" >
+                        *
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="identificationNumber">
+                        Numero Identificador
+                        <span *ngIf="companyForm.controls['identificationNumber'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="identificationNumber"
+                        (keypress)="funcShare.validNumber($event)">
+                    
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="companyName">
+                        Nombre Empresa
+                        <span *ngIf="companyForm.controls['companyName'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="companyName"
+                        (keypress)="funcShare.validLetter($event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">
+                        Primer Nombre
+                        <span *ngIf="companyForm.controls['firstName'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="firstName"
+                        (keypress)="funcShare.validLetter($event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="secondName">
+                        Segundo Nombre
+                        <span *ngIf="companyForm.controls['secondName'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="secondName"
+                        (keypress)="funcShare.validLetter($event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="firstLastname">
+                        Primer Apellido
+                        <span *ngIf="companyForm.controls['firstLastname'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="firstLastname"
+                        (keypress)="funcShare.validLetter($event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="secondLastname">
+                        Segundo Apellido
+                        <span *ngIf="companyForm.controls['secondLastname'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="secondLastname"
+                        (keypress)="funcShare.validLetter($event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Correo Electronico
+                        <span *ngIf="companyForm.controls['email'].invalid" >*</span>
+                    </label>
+                    <input type="text" class="form-control" formControlName="email">
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="sendMessage" 
+                        formControlName="sendMessage">
+                    <label class="form-check-label" for="sendMessage">
+                        Autorizo ​​el envío de mensajes al celular provisto
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="sendEmail"
+                        formControlName="sendEmail">
+                    <label class="form-check-label" for="sendEmail">
+                        Autorizo ​​el envío de mensajes a la siguiente dirección de correo electrónico
+                    </label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-danger btn-lg w-100" (click)="save()">Continuar</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-dark btn-lg w-100" (click)="back()">Regresar</button>
+                    </div>
+                </div>
+            
+
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
